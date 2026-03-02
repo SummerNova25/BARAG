@@ -1,0 +1,72 @@
+Overview
+• Hybrid AI system integrating machine learning based diabetes prediction with Retrieval Augmented Generation grounded in ADA clinical guidelines.
+• Extends prediction into structured clinical action plans based on retrieved guideline content.
+• Designed for conference level research standards.
+
+Objectives
+• Accurately predict diabetes risk using supervised machine learning.
+• Provide structured clinical recommendations grounded in ADA guidelines.
+• Ensure dual layer explainability at model and retrieval levels.
+• Reduce hallucination by constraining generation to retrieved context.
+
+Diabetes Prediction Layer
+• Models evaluated: Logistic Regression, Random Forest, Gradient Boosting, XGBoost.
+• Final model: Nested Cross Validated XGBoost.
+• Evaluation metrics: Accuracy, Precision, Recall, F1 Score, ROC AUC.
+• Outputs include prediction label, probability score, and risk category.
+
+Model Explainability
+• SHAP used for feature contribution analysis.
+• Confusion matrix visualization included.
+• Summary plot for global feature importance.
+
+Guideline Grounded RAG Layer
+• Multiple ADA guideline chapters used including Diagnosis, Glycemic Goals, Pharmacologic Treatment, CVD Risk Management, CKD, and Complications.
+• Content cleaned and processed for semantic retrieval.
+
+Retrieval Architecture
+• Embedding model: BAAI bge large en v1.5.
+• Vector database: FAISS.
+• Semantic similarity used to retrieve relevant guideline sections.
+
+Generator Model
+• LLM used: Mistral 7B Instruct v0.2.
+• Generates structured clinical recommendations grounded in retrieved ADA content. Structured Clinical Output
+• Core Recommendation.
+• First Line Therapy Details.
+• Escalation or Combination Therapy Guidance.
+• Key Clinical Considerations.
+• Supporting Guideline Phrase.
+• Confidence Level.
+
+Retrieval Transparency
+• Displays chapter name.
+• Displays similarity score.
+• Shows preview of retrieved guideline text.
+• Ensures traceability between recommendation and source.
+
+Implementation Details
+• Platform: Google Colab with GPU.
+• FAISS index saved and loaded from Google Drive.
+• Model saving and loading implemented for reproducibility.
+• Dataset and guideline PDFs provided via external links.
+
+Research Contributions
+• Hybrid ML and guideline grounded LLM architecture.
+• Dual layer explainability framework.
+• Structured clinical action generation.
+• Reduction of hallucination through constrained RAG.
+
+Limitations
+• Dependent on quality of guideline chunking.
+• No direct clinical validation yet.
+• Not intended for real world medical decision making without expert oversight.  Future Work
+• Multi guideline comparison studies.
+• Clinical expert validation.
+• Hallucination scoring metrics.
+• Streamlit based deployment interface.
+• External validation dataset evaluation.
+
+Disclaimer
+• This project is intended for academic and research purposes only.
+• It is not a substitute for professional medical advice.
